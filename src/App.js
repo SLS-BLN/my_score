@@ -1,8 +1,8 @@
-import Player from "./components/Player/Player.js";
-import Button from "./components/Button/Button.js";
-import History from "./components/History/History.js";
-import { initialPreviousGames } from "./historyDB.js";
 import { Route, Routes } from "react-router-dom";
+import Navigation from "./components/Navigation/Navigation.js";
+import HomePage from "./pages/HomePage.js";
+import HistoryPage from "./pages/HistoryPage.js";
+import styled from "styled-components";
 
 const players = [
   {
@@ -15,54 +15,31 @@ const players = [
     score: 15,
     id: "2",
   },
-  {
-    name: "Jim",
-    score: 15,
-    id: "3",
-  },
 ];
 
 function App() {
   return (
     <>
-      <heading>
-        <h1>Game</h1>
-      </heading>
-      <main>
+      <header>
+        <h1>Scorekeeper</h1>
+      </header>
+      <Main>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <h2>Game</h2>
-                {players.map((player) => {
-                  return (
-                    <Player
-                      key={player.id}
-                      name={player.name}
-                      score={player.score}
-                    />
-                  );
-                })}
-                <Button background={"lightseagreen"}>end game</Button>
-              </>
-            }
-          />
-          <Route
-            path="/history"
-            element={
-              <>
-                <h2>Previous Games</h2>
-                {initialPreviousGames.map((game) => {
-                  return <History key={game.id} game={game} />;
-                })}
-              </>
-            }
-          />
+          <Route path="/" element={<HomePage players={players} />} />
+          <Route path="history" element={<HistoryPage />} />
         </Routes>
-      </main>
+      </Main>
+      <footer>
+        <Navigation />
+      </footer>
     </>
   );
 }
 
 export default App;
+
+const Main = styled.main`
+  display: grid;
+  gap: 10px;
+  margin-bottom: 4rem;
+`;

@@ -18,6 +18,7 @@ export default function History({ game }) {
 
 const ListItem = styled.li`
   display: flex;
-  justify-content: left;
+  justify-content: space-evenly;
   align-items: center;
+  margin: 1rem;
 `;
