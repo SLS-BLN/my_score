@@ -11,8 +11,8 @@ export default function HomePage({ players }) {
           <Player key={player.id} name={player.name} score={player.score} />
         );
       })}
-      <AddPlayer />
       <Button background={"lightseagreen"}>end game</Button>
+      <AddPlayer />
     </>
   );
 }

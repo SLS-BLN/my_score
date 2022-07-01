@@ -5,20 +5,34 @@ export default function Player({ name }) {
   const [score, setScore] = useState(0);
   const increaseNum = () => setScore(score + 1);
   const decreaseNum = () => setScore(score - 1);
+  const setZero = () => setScore(0);
 
   return (
-    <PlayerWrapper>
-      <PlayerName>{name}</PlayerName>
-      <PlayerScore>
-        <Button type="button" aria-label="Decrease score" onClick={decreaseNum}>
-          -
-        </Button>
-        <span>{score}</span>
-        <Button type="button" aria-label="Increase score" onClick={increaseNum}>
-          +
-        </Button>
-      </PlayerScore>
-    </PlayerWrapper>
+    <>
+      <PlayerWrapper>
+        <PlayerName>{name}</PlayerName>
+        <PlayerScore>
+          <Button
+            type="button"
+            aria-label="Decrease score"
+            onClick={decreaseNum}
+          >
+            -
+          </Button>
+          <span>{score}</span>
+          <Button
+            type="button"
+            aria-label="Increase score"
+            onClick={increaseNum}
+          >
+            +
+          </Button>
+        </PlayerScore>
+      </PlayerWrapper>
+      <ResetButton type="button" aria-label="Reset score" onClick={setZero}>
+        Reset scores
+      </ResetButton>
+    </>
   );
 }
 
@@ -41,6 +55,16 @@ const Button = styled.button`
   background-color: #999;
   color: white;
   width: 3rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px; ;
+`;
+
+const ResetButton = styled.button`
+  font-size: 1.8rem;
+  font-weight: bold;
+  background-color: #999;
+  color: white;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px; ;
