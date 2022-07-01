@@ -4,18 +4,7 @@ import HomePage from "./pages/HomePage.js";
 import HistoryPage from "./pages/HistoryPage.js";
 import styled from "styled-components";
 
-const players = [
-  {
-    name: "John",
-    score: 15,
-    id: "1",
-  },
-  {
-    name: "Jane",
-    score: 15,
-    id: "2",
-  },
-];
+const players = [];
 
 function App() {
   return (
