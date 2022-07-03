@@ -3,16 +3,19 @@ import AddPlayer from "../components/Player/AddPlayer.js";
 import Button from "../components/Button/Button";
 import { useState } from "react";
 
-const players = [
-  {
-    id: 1,
-    name: "Player 2",
-    score: 14,
-  },
-];
+const dummyData = {
+  id: 11111,
+  name: "Player 1",
+  score: 14,
+};
 
 export default function HomePage() {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [players, setPlayers] = useState([dummyData]);
+
+  const handleAddPlayer = (name) => {
+    setPlayers([...players, { id: players.length + 1, name, score: 0 }]);
+  };
 
   const endGameHandler = () => {
     setIsPlaying(false);
@@ -28,7 +31,7 @@ export default function HomePage() {
     </Button>
   );
 
-  const addPlayer = <AddPlayer />;
+  const addPlayer = <AddPlayer currywurst={handleAddPlayer} />;
 
   return (
     <>

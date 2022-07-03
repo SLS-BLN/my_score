@@ -9,6 +9,7 @@ export default function AddPlayer() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(name);
+    // irgendwas mit currywurst ...
     setName("");
   };
 
