@@ -3,28 +3,40 @@ import AddPlayer from "../components/Player/AddPlayer.js";
 import Button from "../components/Button/Button";
 import { useState } from "react";
 
-export default function HomePage({ players }) {
+const players = [
+  {
+    id: 1,
+    name: "Player 2",
+    score: 14,
+  },
+];
+
+export default function HomePage() {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const endGameHandler = () => {
     setIsPlaying(false);
   };
 
-  const displayGame = players.map((player) => {
+  const displayPlayer = players.map((player) => {
     return <Player key={player.id} name={player.name} score={player.score} />;
   });
+
+  const endGameButton = (
+    <Button background={"red"} onClick={endGameHandler}>
+      End game
+    </Button>
+  );
+
+  const addPlayer = <AddPlayer />;
 
   return (
     <>
       <h2>Game</h2>
-      {!isPlaying && <p>Start a new game, enter your name below</p>}
-      {isPlaying && displayGame}
-      {isPlaying && (
-        <Button background={"lightseagreen"} onClick={endGameHandler}>
-          end game
-        </Button>
-      )}
-      <AddPlayer />
+      {!isPlaying && <p>Want to play?</p>}
+      {!isPlaying && addPlayer}
+      {isPlaying && displayPlayer}
+      {isPlaying && endGameButton}
     </>
   );
 }

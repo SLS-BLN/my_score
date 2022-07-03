@@ -15,7 +15,7 @@ export default function AddPlayer() {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Name of player:
+        What's your name?
         <input type="text" value={name} onChange={handleChange} />
       </label>
       <button type="submit">Add Player</button>
