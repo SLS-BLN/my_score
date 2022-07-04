@@ -1,6 +1,10 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function History({ game }) {
+  const [history, setHistory] = useState({ game });
+  console.log(history);
+
   return (
     <section>
       <h3>Game</h3>

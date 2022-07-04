@@ -2,10 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function Player({ name }) {
-  const [score, setScore] = useState(0);
   const increaseNum = () => setScore(score + 1);
   const decreaseNum = () => setScore(score - 1);
-  const setZero = () => setScore(0);
+  const [score, setScore] = useState(0);
 
   return (
     <>
@@ -29,9 +28,6 @@ export default function Player({ name }) {
           </Button>
         </PlayerScore>
       </PlayerWrapper>
-      <ResetButton type="button" aria-label="Reset score" onClick={setZero}>
-        Reset scores
-      </ResetButton>
     </>
   );
 }

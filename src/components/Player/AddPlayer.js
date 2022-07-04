@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function AddPlayer() {
+export default function AddPlayer({ onAddPlayer }) {
   const [name, setName] = useState("");
   const handleChange = (event) => {
     setName(event.target.value);
@@ -8,6 +8,7 @@ export default function AddPlayer() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    onAddPlayer(name);
     console.log(name);
     setName("");
   };
@@ -15,7 +16,7 @@ export default function AddPlayer() {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Name of player:
+        What's your name?
         <input type="text" value={name} onChange={handleChange} />
       </label>
       <button type="submit">Add Player</button>

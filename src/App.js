@@ -4,29 +4,21 @@ import HomePage from "./pages/HomePage.js";
 import HistoryPage from "./pages/HistoryPage.js";
 import styled from "styled-components";
 
-const players = [
-  {
-    id: 1,
-    name: "Player 1",
-    score: 14,
-  },
-];
-
 function App() {
   return (
     <>
-      <header>
+      <Header>
         <h1>Scorekeeper</h1>
-      </header>
+      </Header>
       <Main>
         <Routes>
-          <Route path="/" element={<HomePage players={players} />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="history" element={<HistoryPage />} />
         </Routes>
       </Main>
-      <footer>
+      <Footer>
         <Navigation />
-      </footer>
+      </Footer>
     </>
   );
 }
@@ -35,6 +27,21 @@ export default App;
 
 const Main = styled.main`
   display: grid;
-  gap: 10px;
-  margin-bottom: 4rem;
+  gap: 1rem;
+  margin: 3rem;
+`;
+
+const Header = styled.header`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem;
+`;
+
+const Footer = styled.footer`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
 `;
