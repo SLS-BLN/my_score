@@ -11,10 +11,11 @@ const dummyData = {
 
 export default function HomePage() {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [players, setPlayers] = useState([dummyData]);
+  const [players, setPlayers] = useState([]);
 
   const handleAddPlayer = (name) => {
     setPlayers([...players, { id: players.length + 1, name, score: 0 }]);
+    console.log(players);
   };
 
   const endGameHandler = () => {
@@ -31,15 +32,21 @@ export default function HomePage() {
     </Button>
   );
 
-  const addPlayer = <AddPlayer currywurst={handleAddPlayer} />;
+  const addPlayer = <AddPlayer onAddPlayer={handleAddPlayer} />;
+
+  // change state of score in Player.js - find solution
+  const setZero = () => "do something to reset the score";
 
   return (
     <>
       <h2>Game</h2>
+      {addPlayer}
       {!isPlaying && <p>Want to play?</p>}
-      {!isPlaying && addPlayer}
-      {isPlaying && displayPlayer}
-      {isPlaying && endGameButton}
+      {displayPlayer}
+      {endGameButton}
+      <button type="button" aria-label="Reset score" onClick={setZero}>
+        Reset scores
+      </button>
     </>
   );
 }
